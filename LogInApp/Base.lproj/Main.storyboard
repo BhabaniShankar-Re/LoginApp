@@ -243,12 +243,13 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2wu-sa-1LS"/>
+                                                    <action selector="signupButtonAction:" destination="q1A-Er-9K2" eventType="touchUpInside" id="hdE-cO-605"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="744" image="add-user" translatesAutoresizingMaskIntoConstraints="NO" id="1wK-FS-GBr">
-                                                <rect key="frame" x="122" y="40" width="170" height="170"/>
+                                                <rect key="frame" x="142" y="40" width="150" height="170"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="170" id="6cY-fN-mKN"/>
+                                                    <constraint firstAttribute="width" constant="150" id="Xjs-3J-6L6"/>
                                                     <constraint firstAttribute="height" priority="999" constant="170" id="ZsZ-v6-Baj"/>
                                                 </constraints>
                                             </imageView>
@@ -263,7 +264,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" id="8WV-2H-sgW"/>
+                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ToLoginScreenSegue" id="8WV-2H-sgW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -275,7 +276,7 @@
                                             <constraint firstAttribute="trailing" secondItem="4lp-Qx-xzw" secondAttribute="trailing" constant="20" id="ZCM-Vf-V0P"/>
                                             <constraint firstItem="4lp-Qx-xzw" firstAttribute="leading" secondItem="Q4G-Fa-hB5" secondAttribute="leading" constant="20" id="bc9-Gl-fb9"/>
                                             <constraint firstItem="1wK-FS-GBr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Q4G-Fa-hB5" secondAttribute="top" constant="40" id="bnT-Vb-5s4"/>
-                                            <constraint firstItem="1wK-FS-GBr" firstAttribute="centerX" secondItem="Q4G-Fa-hB5" secondAttribute="centerX" id="djQ-Vh-gCy"/>
+                                            <constraint firstItem="1wK-FS-GBr" firstAttribute="centerX" secondItem="Q4G-Fa-hB5" secondAttribute="centerX" constant="10" id="djQ-Vh-gCy"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="GqW-Jd-o5z" secondAttribute="bottom" constant="20" id="giE-hS-N96"/>
                                             <constraint firstItem="hE2-Rn-Rwa" firstAttribute="centerX" secondItem="Q4G-Fa-hB5" secondAttribute="centerX" id="mWU-9v-Czh"/>
                                             <constraint firstItem="hE2-Rn-Rwa" firstAttribute="centerY" secondItem="Q4G-Fa-hB5" secondAttribute="centerY" priority="998" constant="150" id="rKv-FH-D5f"/>
@@ -344,8 +345,8 @@
                                     <action selector="lgooutAction:" destination="9ee-jx-Gh8" eventType="touchUpInside" id="DG1-Ie-v7c"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYF-I8-lA2">
-                                <rect key="frame" x="186" y="342.5" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYF-I8-lA2">
+                                <rect key="frame" x="20" y="343" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -356,7 +357,9 @@
                             <constraint firstItem="UrV-fj-ta6" firstAttribute="centerX" secondItem="ug4-qs-y4E" secondAttribute="centerX" id="Yo1-CY-dIi"/>
                             <constraint firstItem="kYF-I8-lA2" firstAttribute="centerX" secondItem="ug4-qs-y4E" secondAttribute="centerX" id="gHH-HN-s4x"/>
                             <constraint firstItem="UrV-fj-ta6" firstAttribute="centerY" secondItem="ug4-qs-y4E" secondAttribute="centerY" id="gJ4-WI-agM"/>
+                            <constraint firstItem="q0G-m7-I9V" firstAttribute="trailing" secondItem="kYF-I8-lA2" secondAttribute="trailing" constant="20" id="l6e-CM-V3S"/>
                             <constraint firstItem="UrV-fj-ta6" firstAttribute="top" secondItem="kYF-I8-lA2" secondAttribute="bottom" constant="40" id="mkh-Ne-B9o"/>
+                            <constraint firstItem="kYF-I8-lA2" firstAttribute="leading" secondItem="q0G-m7-I9V" secondAttribute="leading" constant="20" id="x82-o2-NWV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q0G-m7-I9V"/>
                     </view>

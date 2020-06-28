@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
@@ -29,11 +30,15 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func lgooutAction(_ sender: Any){
-        userDefault.set(false, forKey: "islogedin")
-        let nav = self.navigationController
-        self.navigationController?.popToRootViewController(animated: true)
-        let vc = self.storyboard?.instantiateViewController(identifier: "LoginView") as! LoginViewController
-        nav?.pushViewController(vc, animated: false)
+        do{
+          try Auth.auth().signOut()
+            let nav = self.navigationController
+            self.navigationController?.popToRootViewController(animated: true)
+            let vc = self.storyboard?.instantiateViewController(identifier: "LoginView") as! LoginViewController
+            nav?.pushViewController(vc, animated: false)
+        }catch let error{
+            print(error.localizedDescription)
+        }
     }
     
 

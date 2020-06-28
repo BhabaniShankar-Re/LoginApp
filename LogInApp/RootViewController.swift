@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let loinStaus = userDefault.bool(forKey: "islogedin")
-        if  loinStaus == true{
-            let username = userDefault.object(forKey: "username")
+        
+        if let currentuser = Auth.auth().currentUser {
+            let username = currentuser.email
             self.performSegue(withIdentifier: "RootToHome", sender: username)
         }else{
             self.performSegue(withIdentifier: "RootToLogin", sender: nil)

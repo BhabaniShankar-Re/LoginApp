@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupViewController: UIViewController {
     
@@ -20,8 +21,19 @@ class SignupViewController: UIViewController {
     
     @IBOutlet var textFields: [UITextField]!
     
+    let alertView: UIAlertController = UIAlertController(title: "Error", message: nil, preferredStyle: .alert)
+    
     override func viewDidLoad() {
         setupUI()
+        let okAction = UIAlertAction(title: "Ok", style: .default){
+            _ in
+            if self.alertView.title == "Success"{
+                self.performSegue(withIdentifier: "ToLoginScreenSegue", sender: nil)
+            }
+            
+        }
+        
+        alertView.addAction(okAction)
     }
     
     func setupUI(){
@@ -43,29 +55,54 @@ class SignupViewController: UIViewController {
         }
         loginscreenButton.layer.cornerRadius = loginscreenButton.frame.height/2
     }
+    
+    @IBAction func signupButtonAction(_ sender: Any) {
+        if passwordTextField.text != "", passwordTextField.text == confirmPassword.text{
+            let email = emailIdTextField.text!; let password = confirmPassword.text!
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self](result, error) in
+                guard let stgself = self else { return }
+                if let error = error{
+                    stgself.alertView.message = error.localizedDescription
+                    stgself.present(stgself.alertView, animated: true, completion: nil)
+                }else{
+                    stgself.alertView.title = "Success"
+                    stgself.alertView.message = "Successfully account creaed."
+                    stgself.present(stgself.alertView, animated: true, completion: nil)
+                }
+            }
+        }else{
+            alertView.message = "Password didn't matched."
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
+    
+    
 }
 
 
 extension SignupViewController: UITextFieldDelegate{
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == emailIdTextField{
-            isValidEmail(email: textField.text!)
+            if isValidEmail(email: textField.text!){
+                print("valid")
+            }
         }
     }
     
-    func isValidEmail(email: String){
-        let emailrgx = "[A-Z0-9a-z.-_]+@[A-Za-z.-]+\\.[A-Za-z]{2,3}"
-        
+    func isValidEmail(email: String) -> Bool {
+        var validity = false
         do{
+            let emailrgx = "[A-Z0-9a-z.-_]+@[A-Za-z.-]+\\.[A-Za-z]{2,3}"
             let regex = try NSRegularExpression(pattern: emailrgx)
 
             let result = regex.matches(in: email, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: email.count))
             if result.count == 1{
-                print("valid")
+                validity = true
             }
         }catch let error as NSError{
             print(error.localizedDescription)
         }
+        return validity
     }
 }
 
